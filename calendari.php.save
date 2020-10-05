@@ -1,0 +1,35 @@
+<table>
+	<tr>
+		<td>Lun</td>
+		<td>Mar</td>
+		<td>Mie</td>
+		<td>Jue</td>
+		<td>Vie</td>
+		<td>Sab</td>
+		<td>Dom</td>
+	</tr>
+<?php
+
+$dia= 1 - date("N");
+$dias_mes = 0;
+
+if(parseInt(date("n")) == 1 || date("n") == 3 || date("n") == 5 || date("n") == 7 || date("n") == 8 || date(n)") == 10 || date("n") == 12) {$dias_mes = 32};
+if(date("n") == 4 || 6 || 8 || 11) $dias_mes == 31;
+if(date("n") == 2) $dias_mes == 29;
+
+	for ($fila = 0; $fila < 6; $fila++) {
+		echo"<tr>";
+
+		for ($columna = 0; $columna < 7; $columna++) {
+			echo"<td>";
+			if($dia > 0 && $dia < $dias_mes)  echo"$dia";
+			echo"</td>";
+			$dia++;
+		}
+
+		echo"</tr>";
+	}
+
+?>
+
+</table>
