@@ -1,0 +1,5 @@
+AuthUserFile /var/www/html/dhernandez/M06/.htpasswd
+AuthName DirectoriProtegit
+AuthType Basic
+Require user armand
+Require user dhernandez
