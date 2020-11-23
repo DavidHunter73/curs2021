@@ -86,6 +86,7 @@
 	</head>
 
 	<body>
+
 		<!--Menú de Login-->
 		<form class="form-horizontal" enctype="multipart/form-data" action="publica.php" method="post" id="aute" name="autentificacio">
 				

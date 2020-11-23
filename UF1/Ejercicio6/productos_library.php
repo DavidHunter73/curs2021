@@ -12,25 +12,6 @@
 	$creation_error = false;
 
 
-	/****Función para actualizar la sessión con la base de datos
-	function ActualizarBD($new_id){
-		//Guarda el id y el rol en la session
-		$id = $_SESSION["login"];
-		$role = GetRole($id);
-
-		//Actualiza la variable de sesion con la base de datos
-		BaseDatos();
-		BaseDatosProductos();
-
-		//Reindica a session lo que debe ser
-		$_SESSION["login"] = $id;
-		$_SESSION["role"] = $role;
-
-		return $new_id;
-	}
-	/****Fin de la función ActualizarBD()****/
-
-
 	/****Función de comprobación de un valor****/
 	function Comprobar($valor, $tipo){
 
