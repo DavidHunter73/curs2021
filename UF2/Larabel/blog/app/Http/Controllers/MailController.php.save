@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use Mail;
+
+use App\
+class MailController extends Controller
+{
+    public function mail(){
+	$name = 'Patata';
+	Mail::to('davidhequ@gmail.com')->send(new PatataMail($name));
+	return 'Email sent Good';
+    }
+}
+?>
