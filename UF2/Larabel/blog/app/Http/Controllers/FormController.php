@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class FormController extends Controller
 {
     public function show() {
-        return view("form");
+        return view('form');
     }
 
     public function postform(Request $request){
@@ -18,24 +18,22 @@ class FormController extends Controller
             $aut="usuario autentificado";
         }*/
 
-        if($request->has("file")){
-            return view("welcome");
-        }
 
-        if($request->has("image")){
-            return view("welcome");
-        }
+        $validateData = $request->validate([
+            'name' => 'required|string',
+            'mail' => 'required|email',
+            'nif' => 'required|string',
+            'file' => 'required|between:0,1024',
+            'image' => 'required|dimensions:min_width=1920,min_height=1080'
+        ]);
 
-        if($request->filled("name")){
-            
-        }
-
-        return view('dades')
-            ->with('name', $request->input("name")) 
-            ->with('mail', $request->input("mail"))
-            ->with('nif', $request->input("nif"))
-            ->with('password', $request->input("password"))
-            /*->with('aut', $aut)*/;
+        $data["name"]=$request->input("name");
+        $data["mail"]=$request->input("mail");
+        $data["nif"]=$request->input("nif");
+        $data["file"]=$request->input("file");
+        $data["image"]=$request->input("image");
+   
+        return view("dades",$data);
     }
 }
 

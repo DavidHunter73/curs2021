@@ -16,7 +16,8 @@
 		<p>Tu nombre es: {{$name}}</p>
 		<p>Tu mail es: {{$mail}}</p>
 		<p>Tu NIF es: {{$nif}}</p>
-		<p>Tu contraseña es: {{$password}}</p>
+		<p>Tu archivo: {{$file}}</p>
+		<p>Tu imagen: {{$image}}</p>
 
 		<br>
 

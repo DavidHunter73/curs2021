@@ -17,8 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/form', [App\Http\Controllers\FormController::class, 'show'])->name('form');
+
+Route::post('/dades', [App\Http\Controllers\DadesController::class, 'show'])->name('dades');
+
+Route::post('/form', [App\Http\Controllers\FormController::class, 'postform'])->name('postform');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
