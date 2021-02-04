@@ -28,7 +28,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
-Route::get('/dadesTable', [App\Http\Controllers\JuegoController::class, 'db']);
+Route::get('/dadesTable', [App\Http\Controllers\JuegoController::class, 'db'])->name('dadesTable');
 
 Route::get('/createTable', [App\Http\Controllers\JuegoController::class, 'storeForm'])->name('storeForm');
 

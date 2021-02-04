@@ -10,9 +10,6 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     You're logged in!
-                    <br>
-                    <a href="{{route('form')}}">Link al formulario</a>
-                    <a href="{{route('dadesTable')}}">Link a la base de datos</a>
                 </div>
             </div>
         </div>
