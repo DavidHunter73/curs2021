@@ -14,7 +14,11 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.2"
+        "laravel/ui": "^3.2",
+        "infyomlabs/laravel-generator": "8.0.x-dev",
+        "laravelcollective/html": "^6.2",
+        "infyomlabs/adminlte-templates": "^2.0",
+        "doctrine/dbal": "~2.3"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
