@@ -27,3 +27,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::resource('personajes', App\Http\Controllers\PersonajeController::class);
+
+Route::resource('posts', App\Http\Controllers\PostController::class);
