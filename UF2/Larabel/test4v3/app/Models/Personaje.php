@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Class Personaje
  * @package App\Models
- * @version February 5, 2021, 2:00 pm UTC
+ * @version February 5, 2021, 3:39 pm UTC
  *
  * @property string $nom
  * @property string $especie

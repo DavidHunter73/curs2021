@@ -13,13 +13,13 @@
                 <td width="120">
                     {!! Form::open(['route' => ['$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.destroy', $$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.show', [$$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$]) }}" class='btn btn-default btn-xs'>
-                            <i class="far fa-eye"></i>
+                        <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.show', [$$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$]) }}" class='bg-success m-2'>
+                            <p class="text-white">Mostrar</p>
                         </a>
-                        <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.edit', [$$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$]) }}" class='btn btn-default btn-xs'>
-                            <i class="far fa-edit"></i>
+                        <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.edit', [$$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$]) }}" class='bg-warning m-2'>
+                            <p class="text-white">Editar</p>
                         </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {!! Form::button('<p class="text-white">Eliminar</p>', ['type' => 'submit', 'class' => 'bg-danger m-2', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>

@@ -83,3 +83,11 @@ border-top: 2px solid #ccc;
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('personajes.index') }}"
+       class="nav-link {{ Request::is('personajes*') ? 'active' : '' }}">
+        <p>Personajes</p>
+    </a>
+</li>
+
+
