@@ -65,7 +65,8 @@ class JuegoController extends Controller
     {
         //
         $juego=Juego::findOrFail($id);
-        return view('juego.edit', compact('juego'));
+        $datos['juegos']=Juego::paginate(3);
+        return view('juego.edit', compact('juego'), $datos);
     }
 
     /**

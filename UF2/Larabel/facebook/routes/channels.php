@@ -20,3 +20,7 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 Broadcast::channel('public', function ($user){
     return true;
 });
+
+Broadcast::channel('connected', function ($user) {
+    return $user;
+});

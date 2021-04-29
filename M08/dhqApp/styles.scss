@@ -1,0 +1,11 @@
+$color-principal: blue;
+$color-vora: darken($color-principal, 20%);
+$color-enllac: lighten($color-principal, 20%);
+
+div {
+  color: $color-principal;
+  border: 1px solid $color-vora;
+  a {
+    color:$color-enllac;
+  }
+}

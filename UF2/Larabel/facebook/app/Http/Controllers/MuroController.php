@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Message;
+use App\Models\Like;
 use App\Models\User;
+use App\Models\Comment;
+use App\Events\NewCommentNotification;
 use App\Events\NewMessageNotification;
+use App\Events\ReloadLikes;
+use App\Events\UserConnection;
 
 class MuroController extends Controller
 {
@@ -20,9 +26,9 @@ class MuroController extends Controller
     {
         //
         if(Auth::user() != null){
-        $data["user_id"] = Auth::user()->id;
-        $data["user_name"] = Auth::user()->name;
-        return view("muro", $data);
+            $data["user_id"] = Auth::user()->id;
+            $data["user_name"] = Auth::user()->name;
+            return view("muro", $data);
         } else {
             return redirect()->route('public');
         }
@@ -32,8 +38,17 @@ class MuroController extends Controller
     public function send(Request $request){
         $message = new Message;
         $message->from = Auth::user()->id;
-        $message->to = 0;
         $message->messages = $request->mensaje;
+        $message->likes = 0;
+        $message->image = "";
+        
+        /*if($request->imagen == null){
+            $message->image = "";
+        } else {
+            Storage::disk('local')->put("Imagen".$message->id.".png" ,$request->imagen);
+            $message->image = "Imagen".$message->id.".png";
+        }*/
+        
         $message->save();
 
         $user = User::find($message->from);
@@ -44,10 +59,60 @@ class MuroController extends Controller
     public function get(){
         $messages = Message::all();
         $user = User::all();
+        $likes = Like::all();
+        $comments = Comment::all();
 
-        $all = [$messages, $user];
+        $all = [$messages, $user, $likes, $comments];
         
         return $all;
+    }
+
+
+    public function like(Request $request){
+        $existe = false;
+
+        $likes = Like::all();
+
+        if(count ($likes) > 0){
+            foreach ($likes as $valor){
+                if($valor->user_id == $request->usuario
+                &&
+                $valor->message_id == $request->mensaje)
+                {
+                    $valor->delete();
+                    $message = Message::find($request->mensaje);
+                    $message->likes--;
+                    $message->save();
+
+                    $existe = true;
+                }          
+            }
+        }
+
+        if(!$existe){
+            $like = new Like;
+            $like->user_id = $request->usuario;
+            $like->message_id = $request->mensaje;
+            $like->save();
+            
+            $message = Message::find($request->mensaje);
+            $message->likes++;
+            $message->save();
+        }
+
+        event(new ReloadLikes());
+    }
+
+
+    public function comment(Request $request){
+        $comment = new Comment;
+        $comment->user_id = Auth::user()->id;
+        $comment->message_id = $request->mensaje;
+        $comment->comments = $request->comentario;
+        
+        $comment->save();
+
+        event(new NewCommentNotification($comment));
     }
 
 
