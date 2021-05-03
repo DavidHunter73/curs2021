@@ -23,6 +23,15 @@
     >
       Genero
     </router-link>
+
+    <br />
+
+    <router-link
+      to="/dhernandez/ProyectoFinal/Liber/public/login"
+      class="nav-link"
+    >
+      Formulario de Login
+    </router-link>
   </header>
 </template>
 
